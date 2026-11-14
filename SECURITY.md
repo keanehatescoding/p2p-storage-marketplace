@@ -5,12 +5,16 @@
 Use this section to tell people about which versions of your project are
 currently being supported with security updates.
 
+No release of this project has been published yet. Only the current
+development line (`0.1.x`, matching `package.json`) is maintained, and it
+receives security fixes on the default branch. Older or unreleased lines are
+not supported. Once releases are published, this table will list each release
+line that receives security updates.
+
 | Version | Supported          |
 | ------- | ------------------ |
-| 5.1.x   | :white_check_mark: |
-| 5.0.x   | :x:                |
-| 4.0.x   | :white_check_mark: |
-| < 4.0   | :x:                |
+| 0.1.x   | :white_check_mark: |
+| < 0.1   | :x:                |
 
 ## Reporting a Vulnerability
 
