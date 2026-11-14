@@ -14,8 +14,29 @@ currently being supported with security updates.
 
 ## Reporting a Vulnerability
 
-Use this section to tell people how to report a vulnerability.
+Please do not report security vulnerabilities in public GitHub issues, pull
+requests, or discussions.
 
-Tell them where to go, how often they can expect to get an update on a
-reported vulnerability, what to expect if the vulnerability is accepted or
-declined, etc.
+Report them privately through GitHub's private vulnerability reporting:
+
+1. Open the **Security** tab of this repository.
+2. Select **Report a vulnerability**.
+3. Describe the issue, the affected version or commit, steps to reproduce,
+   and the potential impact. Include a proof of concept if you have one.
+
+Reports submitted this way stay visible only to the maintainers and the
+reporter until a fix is released.
+
+### What to expect
+
+- **Acknowledgement:** we aim to acknowledge your report within 3 business days.
+- **Triage:** we will confirm whether the issue is accepted or declined within
+  7 days and tell you the severity we have assigned.
+- **Updates:** for accepted reports we will post a status update at least
+  every 14 days until the issue is resolved.
+- **Fix and disclosure:** we will develop and test a fix, release it, and then
+  publish a security advisory crediting the reporter (unless you ask to remain
+  anonymous). We ask that you keep the details confidential until the advisory
+  is published.
+- **Declined reports:** if we decline a report, we will explain why. If you
+  disagree, you may reply on the advisory thread to ask for reconsideration.
