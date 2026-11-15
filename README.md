@@ -37,7 +37,7 @@ What is here:
 - `src/app/globals.css`, `.gitignore`, `.env.example`
 
 What is still a stub:
-- `src/app/layout.tsx` + `src/app/page.tsx` — scaffold against the installed Next version (see `node_modules/next/dist/docs/`); the `odpc-compliance-saas` siblings are a working reference.
+- App routes/UI — `src/app/` is not yet scaffolded (add `layout.tsx`, `page.tsx`, etc. against the installed Next version; see `node_modules/next/dist/docs/` or the `odpc-compliance-saas` sibling for a working reference).
 - Auth (sessions, password reset, email verify) — copy and adapt the `lib/session.ts`, `lib/password.ts`, `lib/email-verification.ts` set from `odpc-compliance-saas`.
 - Payments (M-Pesa Daraja / Paystack / card) — stack-specific, add per project.
 - Seed data in `scripts/seed.ts` — placeholder only.
