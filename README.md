@@ -33,11 +33,12 @@ npm run dev           # Next.js dev server on :3000
 What is here:
 - `src/db/schema.ts` — Drizzle Postgres schema specific to this domain
 - `src/db/index.ts` — pooled `pg` + Drizzle client
+- `src/app/layout.tsx`, `src/app/page.tsx` — root layout and a homepage that lists published listings
 - `drizzle.config.ts`, `next.config.ts`, `tsconfig.json`, `eslint.config.mjs`, `postcss.config.mjs`
 - `src/app/globals.css`, `.gitignore`, `.env.example`
 
 What is still a stub:
-- App routes/UI — `src/app/` is not yet scaffolded (add `layout.tsx`, `page.tsx`, etc. against the installed Next version; see `node_modules/next/dist/docs/` or the `odpc-compliance-saas` sibling for a working reference).
+- App routes/UI — only the homepage exists; listing detail, host dashboard, booking and auth routes are still to come (see the `odpc-compliance-saas` sibling for a working reference).
 - Auth (sessions, password reset, email verify) — copy and adapt the `lib/session.ts`, `lib/password.ts`, `lib/email-verification.ts` set from `odpc-compliance-saas`.
 - Payments (M-Pesa Daraja / Paystack / card) — stack-specific, add per project.
 - Seed data in `scripts/seed.ts` — placeholder only.
