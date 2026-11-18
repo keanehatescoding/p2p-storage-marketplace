@@ -1,5 +1,6 @@
 import { desc, eq } from "drizzle-orm";
-import { db, type Listing, listings } from "@/db";
+import { db } from "@/db";
+import { type Listing, listings } from "@/db/schema";
 
 export const dynamic = "force-dynamic";
 
@@ -37,7 +38,7 @@ export default async function HomePage() {
       <section className="space-y-3">
         <h1 className="text-3xl font-semibold">Storage space, without the warehouse.</h1>
         <p className="max-w-2xl text-stone-600">
-          Rent a spare garage, room or warehouse corner from a verified host, or list your
+          Rent a spare garage, room or warehouse corner from a host, or list your
           own space and earn monthly income.
         </p>
       </section>

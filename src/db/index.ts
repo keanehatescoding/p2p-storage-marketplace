@@ -9,7 +9,11 @@ const globalForDb = globalThis as unknown as { pool?: Pool };
 
 function getPool(): Pool {
   if (!globalForDb.pool) {
-    globalForDb.pool = new Pool({ connectionString: process.env.DATABASE_URL, max: 10 });
+    globalForDb.pool = new Pool({
+      connectionString: process.env.DATABASE_URL,
+      max: 10,
+      connectionTimeoutMillis: 5_000,
+    });
   }
   return globalForDb.pool;
 }
