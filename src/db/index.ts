@@ -9,11 +9,16 @@ const globalForDb = globalThis as unknown as { pool?: Pool };
 
 function getPool(): Pool {
   if (!globalForDb.pool) {
-    globalForDb.pool = new Pool({
+    const pool = new Pool({
       connectionString: process.env.DATABASE_URL,
       max: 10,
       connectionTimeoutMillis: 5_000,
+      query_timeout: 5_000,
     });
+    pool.on("error", (err: Error) => {
+      console.error("Unexpected error on idle database client", err);
+    });
+    globalForDb.pool = pool;
   }
   return globalForDb.pool;
 }
