@@ -196,6 +196,22 @@ export const reviews = pgTable(
   ],
 );
 
+// Rows whose rating falls outside 1..5 are archived here by migration 0001
+// before the CHECK constraint is added, so no existing review is silently
+// rewritten or lost.
+export const reviewsInvalidRatingArchive = pgTable(
+  "reviews_invalid_rating_archive",
+  {
+    id: uuid("id").primaryKey(),
+    bookingId: uuid("booking_id").notNull(),
+    authorId: uuid("author_id").notNull(),
+    rating: integer("rating").notNull(),
+    archivedAt: timestamp("archived_at", { withTimezone: true })
+      .notNull()
+      .defaultNow(),
+  },
+);
+
 export const listingRelations = relations(listings, ({ one, many }) => ({
   host: one(users, { fields: [listings.hostId], references: [users.id] }),
   photos: many(listingPhotos),
