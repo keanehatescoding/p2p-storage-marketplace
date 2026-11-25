@@ -30,6 +30,13 @@ npm run db:migrate    # apply migrations from ./drizzle
 npm run dev           # Next.js dev server on :3000
 ```
 
+Migration `0001_reviews_rating_range` first archives any pre-existing reviews
+whose rating is outside 1..5 into `reviews_invalid_rating_archive`, then
+removes them from `reviews`, then adds the CHECK constraint. Valid ratings are
+untouched and no invalid value is silently rewritten; audit the rows with
+`SELECT id, rating FROM reviews WHERE rating NOT BETWEEN 1 AND 5;` before
+applying it to a database with existing data.
+
 What is here:
 - `src/db/schema.ts` — Drizzle Postgres schema specific to this domain
 - `src/db/index.ts` — pooled `pg` + Drizzle client
