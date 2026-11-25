@@ -8,6 +8,20 @@
       "when": 1794411134318,
       "tag": "0000_cynical_exodus",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1794411134319,
+      "tag": "0001_reviews_rating_range",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1794411134320,
+      "tag": "0002_validate_reviews_rating_range",
+      "breakpoints": true
     }
   ]
 }

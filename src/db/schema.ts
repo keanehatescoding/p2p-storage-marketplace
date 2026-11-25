@@ -1,6 +1,7 @@
 import { relations, sql } from "drizzle-orm";
 import {
   boolean,
+  check,
   date,
   index,
   integer,
@@ -189,7 +190,28 @@ export const reviews = pgTable(
     body: text("body").notNull().default(""),
     createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
   },
-  (t) => [uniqueIndex("reviews_booking_author_idx").on(t.bookingId, t.authorId)],
+  (t) => [
+    uniqueIndex("reviews_booking_author_idx").on(t.bookingId, t.authorId),
+    check("reviews_rating_range", sql`${t.rating} between 1 and 5`),
+  ],
+);
+
+// Rows whose rating falls outside 1..5 are archived here by migration 0001
+// before the CHECK constraint is added, so no existing review is silently
+// rewritten or lost.
+export const reviewsInvalidRatingArchive = pgTable(
+  "reviews_invalid_rating_archive",
+  {
+    id: uuid("id").primaryKey(),
+    bookingId: uuid("booking_id").notNull(),
+    authorId: uuid("author_id").notNull(),
+    rating: integer("rating").notNull(),
+    body: text("body").notNull(),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull(),
+    archivedAt: timestamp("archived_at", { withTimezone: true })
+      .notNull()
+      .defaultNow(),
+  },
 );
 
 export const listingRelations = relations(listings, ({ one, many }) => ({
