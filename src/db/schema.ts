@@ -1,6 +1,7 @@
 import { relations, sql } from "drizzle-orm";
 import {
   boolean,
+  check,
   date,
   index,
   integer,
@@ -189,7 +190,10 @@ export const reviews = pgTable(
     body: text("body").notNull().default(""),
     createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
   },
-  (t) => [uniqueIndex("reviews_booking_author_idx").on(t.bookingId, t.authorId)],
+  (t) => [
+    uniqueIndex("reviews_booking_author_idx").on(t.bookingId, t.authorId),
+    check("reviews_rating_range", sql`${t.rating} between 1 and 5`),
+  ],
 );
 
 export const listingRelations = relations(listings, ({ one, many }) => ({
