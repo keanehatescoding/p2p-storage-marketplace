@@ -206,6 +206,8 @@ export const reviewsInvalidRatingArchive = pgTable(
     bookingId: uuid("booking_id").notNull(),
     authorId: uuid("author_id").notNull(),
     rating: integer("rating").notNull(),
+    body: text("body").notNull(),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull(),
     archivedAt: timestamp("archived_at", { withTimezone: true })
       .notNull()
       .defaultNow(),

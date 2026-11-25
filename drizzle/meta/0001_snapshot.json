@@ -1,6 +1,6 @@
 {
-  "id": "4d9d7675-1bc7-4c77-8df2-ac3fd87b1b1e",
-  "prevId": "ba6ea0e4-18f6-423b-a549-62d80b0b5701",
+  "id": "2cec9abb-a88e-4bdf-ad32-784fdcdec717",
+  "prevId": "4d9d7675-1bc7-4c77-8df2-ac3fd87b1b1e",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
@@ -778,6 +778,18 @@
         "rating": {
           "name": "rating",
           "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "body": {
+          "name": "body",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
           "primaryKey": false,
           "notNull": true
         },

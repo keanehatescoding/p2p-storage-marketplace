@@ -31,8 +31,11 @@ npm run dev           # Next.js dev server on :3000
 ```
 
 Migration `0001_reviews_rating_range` first archives any pre-existing reviews
-whose rating is outside 1..5 into `reviews_invalid_rating_archive`, then
-removes them from `reviews`, then adds the CHECK constraint. Valid ratings are
+whose rating is outside 1..5 into `reviews_invalid_rating_archive` (including
+the original body and creation time), then removes them from `reviews` in the
+same statement, then adds the CHECK constraint as `NOT VALID`. Migration
+`0002_validate_reviews_rating_range` validates it in a separate transaction so
+the exclusive lock is not held during the validating scan. Valid ratings are
 untouched and no invalid value is silently rewritten; audit the rows with
 `SELECT id, rating FROM reviews WHERE rating NOT BETWEEN 1 AND 5;` before
 applying it to a database with existing data.
