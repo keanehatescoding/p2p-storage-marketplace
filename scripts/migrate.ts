@@ -7,7 +7,7 @@ if (!databaseUrl) {
   throw new Error("DATABASE_URL is not set");
 }
 
-const pool = new Pool({ connectionString: databaseUrl });
+const pool = new Pool({ connectionTimeoutMillis: 5_000, connectionString: databaseUrl  });
 const db = drizzle(pool);
 
 try {
