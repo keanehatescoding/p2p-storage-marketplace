@@ -22,6 +22,13 @@
       "when": 1794411134320,
       "tag": "0002_validate_reviews_rating_range",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1794411134321,
+      "tag": "0003_bookings_date_range",
+      "breakpoints": true
     }
   ]
 }
