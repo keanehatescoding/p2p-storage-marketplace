@@ -134,6 +134,7 @@ export const bookings = pgTable(
   (t) => [
     index("bookings_listing_idx").on(t.listingId, t.startsOn),
     index("bookings_renter_idx").on(t.renterId, t.startsOn),
+    check("bookings_date_range", sql`${t.endsOn} IS NULL OR ${t.endsOn} >= ${t.startsOn}`),
   ],
 );
 
